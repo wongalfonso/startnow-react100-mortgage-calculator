@@ -1,32 +1,17 @@
 import React from 'react';
-
-const styleHeader = {
-  textAlign: "center",
-  textDecoration: "bold",
-  paddingBottom: "2em"
-}
-
-const styleLabel = {
-  textAlign: "right",
-  color: "black",
-  fontSize: "1.5em",
-}
-
-const styleInputs = {
-  textAlign: "left",
-  fontSize: "1.5em",
-  marginBottom: "1em",
-}
-const styleSelect = {
-  textAlign: "left",
-  fontSize: "1.5em",
-  marginTop: ".3em",
-}
+import '../css/style.less'
 
 /**************************** Button ************************************/
 function Button(props) {
   return (
-    <button style={{ width: "8em", fontSize: "1.25em", marginTop: "1em" }} type="submit" onClick={props.onClick} name="submit" className="btn btn-primary col-xs-offset-4 col-lg-offset-4">Calculate</button>
+    <button      
+            type="submit" 
+            onClick={props.onClick} 
+            name="submit" 
+            className="btn btn-primary col-md-5 text-center form-control "
+            id="mainButton">
+            Calculate
+    </button>
   )
 };
 
@@ -177,7 +162,7 @@ export default class App extends React.Component {
     let m = p * frac;
     m = m.toFixed(2);
     this.setState({
-      output: m,
+      output: "$" +m + " a month",
     });
     
   };
@@ -186,34 +171,88 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className='container'>
-        <div style = {styleHeader} className = "header"><h3>Mortgage Calculator</h3></div>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label style = {styleLabel} htmlFor="loan" className="control-label col-xs-4 col-md-4 label">Loan Balance</label>
-            <input style = {styleInputs} className="col-xs-4 inputs" id="loan" name="balance" type="text" pattern ="[0-9]*" value={this.state.balance} onChange={this.handleBalance} />
-          </div>
-          <div className="form-group">
-            <label style = {styleLabel} htmlFor="intRate" className="control-label col-xs-4 col-md-4 label">Interest Rate (%)</label>
-            <input style = {styleInputs} className="col-xs-4 inputs" id="intRate" name="rate" type="text" pattern = "^[0-9]+(\.[0-9]*)?$" value={this.state.rate} onChange={this.handleRate} />
-          </div>
-          <div className="form-group">
-            <label style = {styleLabel} htmlFor="loanTerms" className="control-label col-xs-4 col-md-4 label">Loan Terms (years)</label>
-            <select style = {styleSelect} name="term" className="col-xs-4 select" id="loanTerms" value={this.state.value} onChange={this.handleTerm}>
-              <option value="15"> 15 </option>
-              <option value="30"> 30 </option>
-            </select>
-          </div>
-          <div className="form-group">
-            <Button
-              onClick={this.calculate}
-            />
-          </div>
-          <div style = {styleHeader} className="form-group header" name="output" id="output" ><h2> {(this.state.output)}</h2>
-          </div>
-        </form>
+      <div>
+      <div className = "fullPage">
+      <div className = "headerDiv">
+      <header >
+        Mortgage Calculator
+      </header>
       </div>
+      <div className='container Calc'>        
+        <div className = "formClass"> 
+        <form className="form-horizontal wholeForm">
+          <div className="form-group">
+            <label  htmlFor="loan" 
+                    className="control-label col-md-4 label">
+                    Loan Balance
+            </label>
+            <div className="col-md-4">
+              <input  className= "inputs form-control" 
+                      id="loan" 
+                      name="balance" 
+                      type="text" 
+                      pattern ="[0-9]*" 
+                      value={this.state.balance} 
+                      onChange={this.handleBalance} />
+            </div>
+          </div>
 
+          <div className="form-group">
+            <label  htmlFor="intRate" 
+                    className="control-label col-md-4 label">
+                    Interest Rate (%)
+            </label>
+            <div className="col-md-4">
+              <input  className= "inputs form-control" 
+                      id="intRate" 
+                      name="rate" 
+                      type="text" 
+                      pattern = "^[0-9]+(\.[0-9]*)?$" 
+                      value={this.state.rate} 
+                      onChange={this.handleRate} />
+            </div>
+            
+          </div>
+
+          <div className="form-group">            
+              <label  htmlFor="loanTerms" 
+                      className="control-label col-md-4 label">
+                      Loan Terms
+               (years)
+              </label>
+              <div className="col-md-4">
+                <select name="term" 
+                        className= "select form-control" 
+                        id="loanTerms" 
+                        value={this.state.value} 
+                        onChange={this.handleTerm}>                           
+                  <option value="15"> 15 </option>
+                  <option value="30"> 30 </option>
+                </select>
+              </div>            
+          </div>
+
+          <div className="form-group buttonGroup">
+            <div className="row buttonDiv">
+             <Button onClick={this.calculate}/>  
+            </div>            
+          </div>                    
+        </form>
+        <div className="row outputRow">
+            <div className="outputDiv" name="output" id="output" >
+              <div className="col-md-12 outputCol">
+                {(this.state.output)}  
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <footer>
+        <div className = "footer"></div>
+      </footer>
+      </div>
     );
   }
 }

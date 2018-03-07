@@ -1,22 +1,108 @@
-.header {
-    text-align: "center";
-    text-decoration: "bold";
-    padding-bottom: "2em";
-    background-color: red;
+.headerDiv {
+    text-align: center;
+    text-decoration: bold;
+    font-size: 3em;
+    border: dotted black;
+    margin-bottom: 1em;
+    background-color: darkgrey;
   }
-  
+header {
+  margin-top: .25em;
+  margin-bottom: .25em;
+  color: white;
+  font-weight: bold;
+}
+
+.fullPage {
+  background-color: lightgrey;
+  height: 100vh;
+}
+
+.Calc {
+  border: dotted black;
+  background-color: white;
+}
+
+.wholeForm {
+  padding-top: 2em;
+}
+
+.buttonGroup {
+  text-align: center;
+}
+
+
+#mainButton {
+  float:none;
+  width: 8em; 
+  margin-top: 1em; 
+  text-align: center;
+}
 .label {
-    text-align: "right";
-    font-size: "1.5em";
+    text-align: right;
+    font-size: 1.5em;
+    color: black;
   }
   
 .inputs {
-    text-align: "left";
-    font-size: "1.5em";
-    margin-bottom: "1em";
+    text-align: left;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    border-color: black;
+    border-width: medium;
   }
+
 .select {
-    text-align: "left";
-    font-size: "1.5em";
-    margin-top: ".4em";
+    font-size: 1em;
+    margin-top: .4em;
+    border-color: black;
+    border-width: medium;
+  }
+
+.outputRow {
+  height: 5em;
+  text-align: center;
+  margin-bottom: 2em;
+  
+}
+.outputDiv {
+  width: 70%;
+  height: 2em;
+  text-align: center;
+  margin: auto;
+  background-color: lightgrey;
+  border: dotted darkgrey;  
+}
+#output {  
+    font-size: 2em;
+}
+
+.outputCol {
+  text-align: center;
+  height: 100%;
+}
+
+.footer {
+  background-color: darkgrey;
+  width: 100%;
+  height: 8em;
+  bottom: 0;
+}
+  @media (max-width: 992px) {
+    .inputs {
+      text-align: center;
+    }
+    .label {
+      text-align: center;
+    }
+    .fullPage {
+      width: 100%;
+    }
+    .outputGroup {
+      width: 100%;
+    }
+
+    .outputDiv {
+      width: 100%;
+    }
   }
